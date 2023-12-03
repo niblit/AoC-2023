@@ -1,5 +1,7 @@
 fn main() {
-    println!("Hello, world!");
+    let data = include_str!("../input.txt");
+    let result = solve(data);
+    println!("{result}");
 }
 
 fn solve(data: &str) -> u32 {
@@ -7,7 +9,6 @@ fn solve(data: &str) -> u32 {
         .map(|line| {
             let digits = line
                 .chars()
-                .into_iter()
                 .filter_map(|c| c.to_digit(10))
                 .collect::<Vec<u32>>();
             digits.first().unwrap() * 10 + digits.last().unwrap()
